@@ -16,16 +16,16 @@ export default function Taskbar(){
            </Box>
            <Box>
             <Center><MdOutlineExplore size={25}/></Center>
-            <Center> <Text fontSize={10}>HOME</Text></Center>
+            <Center> <Text fontSize={10}>EXPLORE</Text></Center>
             </Box>
             <Add />
            <Box>
            <Center><GiSuitcase size={25}/></Center>
-           <Center> <Text fontSize={10}>HOME</Text></Center>
+           <Center> <Text fontSize={10}>PAKAGES</Text></Center>
             </Box>
            <Box>
            <Center> <HiSpeakerphone size={25}/></Center>
-            <Center> <Text fontSize={10}>HOME</Text></Center>
+            <Center> <Text fontSize={10}>FORUM</Text></Center>
            </Box>
 
         </Flex>

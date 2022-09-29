@@ -15,10 +15,9 @@ import {
   InputGroup,
   InputRightAddon,
   InputLeftAddon,
+  
 } from "@chakra-ui/react";
 import {
-  ArrowUpIcon,
-  HamburgerIcon,
   SearchIcon,
   TriangleDownIcon,
 } from "@chakra-ui/icons";
@@ -29,8 +28,8 @@ import Account from "./Account";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContextProvider";
 import Sidemenu from "../Sidemenu/Sidemenu";
-
-export default function Navbar() {
+import {Link} from "react-router-dom"
+export default function Navbar({scheme}) {
   const [Style, setStyle] = useState(false);
   const [Hide, setHide] = useState(false);
   const { Auth } = useContext(AuthContext);
@@ -51,6 +50,7 @@ export default function Navbar() {
   return (
     <>
       <Flex
+      zIndex="1000"
         flexDirection={{
           lg: "row",
           md: "column",
@@ -58,7 +58,7 @@ export default function Navbar() {
           base: "column",
         }}
         transition="0.5s"
-        bg={Style ? "#2F9BDB" : "Transparent"}
+        bg={Style ? (scheme? scheme :"#2F9BDB") : "Transparent"}
         p={2}
         w="100%"
         justifyContent={{
@@ -101,7 +101,12 @@ export default function Navbar() {
                 color="white"
               >
                 GET APP
+                  
               </Text>
+              <Box display={{lg:"none" ,md:(!Style ? "block" : "none"),sm:(Style ? "block" : "none"),base:(Style ? "block" : "none") }} visibility={{lg:"hidden" ,md:(!Style ? "initial" : "hidden"),sm:(Style ? "initial" : "hidden"),base:(!Style ? "initial" : "hidden") }}>
+
+               <Sidemenu scheme="transparent" color="black"  />
+              </Box>
             </Center>
           </Flex>
           <Spacer />
@@ -175,14 +180,14 @@ export default function Navbar() {
           {/* 88888888888888888888888888888 */}
           <Menu>
             <>
-              <MenuButton color="white">
+              <MenuButton color="white" >
                 <Flex alignItems="center" gap="2px">
                   Inspiration <Spacer />
                   <TriangleDownIcon w="10px" />
                 </Flex>
               </MenuButton>
               <MenuList>
-                <MenuItem>Visit Singapore</MenuItem>
+                <MenuItem><Link to="/singapore">Visit Singapore</Link></MenuItem>
                 <MenuItem>Beaches</MenuItem>
                 <MenuItem>Mountains</MenuItem>
                 <MenuItem>Heritage</MenuItem>
@@ -206,9 +211,7 @@ export default function Navbar() {
           <Spacer />
           {/* 88888888888888888888888888888 */}
           <Center color="white">
-            <Tooltip label="Pakages" aria-label="A tooltip">
-              <p style={{ colo: "white" }}>Pakages</p>
-            </Tooltip>
+              <Link to="/pakages"> <p style={{ colo: "white" }}>Pakages</p></Link>
           </Center>
           <Spacer />
           {/* 88888888888888888888888888888 */}
@@ -233,13 +236,7 @@ export default function Navbar() {
         </Flex>
       </Flex>
 
-      <Box h="1000px">
-        <img
-          src="https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1342&q=80"
-          width="100%"
-          alt=""
-        />
-      </Box>
+      
     </>
   );
 }

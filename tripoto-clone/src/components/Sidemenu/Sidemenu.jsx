@@ -25,7 +25,7 @@ import { useState } from "react";
 import { AuthContext } from "../../context/AuthContextProvider";
 import axios from "axios";
 
-export default function InitialFocus() {
+export default function Sidemenu({scheme}) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [Sign, setSign] = useState(true);
   const [Login, setLogin] = useState(true);
@@ -81,12 +81,13 @@ export default function InitialFocus() {
       <>
         <IconButton
           aria-label="Search database"
+          colorScheme={scheme}
           onClick={onOpen}
           icon={<HamburgerIcon />}
         />
         <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />
-          <DrawerContent>
+          <DrawerContent zIndex="2000">
             <DrawerCloseButton />
             <DrawerHeader>Account Details</DrawerHeader>
 
@@ -123,13 +124,14 @@ export default function InitialFocus() {
       return (
         <>
           <IconButton
+           colorScheme={scheme}
             aria-label="Search database"
             onClick={onOpen}
             icon={<HamburgerIcon />}
           />
           <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
             <DrawerOverlay />
-            <DrawerContent>
+            <DrawerContent zIndex="2000">
               <DrawerCloseButton />
               <DrawerHeader>Create your account</DrawerHeader>
 
@@ -184,13 +186,14 @@ export default function InitialFocus() {
       return (
         <>
           <IconButton
+             colorScheme={scheme}
             aria-label="Search database"
             onClick={onOpen}
             icon={<HamburgerIcon />}
           />
           <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
             <DrawerOverlay />
-            <DrawerContent>
+            <DrawerContent zIndex="2000">
               <DrawerCloseButton />
               <DrawerHeader>Login with your account</DrawerHeader>
 
