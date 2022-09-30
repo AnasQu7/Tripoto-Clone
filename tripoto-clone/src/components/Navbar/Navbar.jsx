@@ -35,16 +35,15 @@ export default function Navbar({scheme}) {
   const { Auth } = useContext(AuthContext);
   window.addEventListener("scroll", () => {
     if (!Style && Math.floor(window.scrollY) > 180) {
-      console.log("yes");
+      
       setStyle(true);
       setHide(true);
     } else if (Style && Math.floor(window.scrollY) < 180) {
-      console.log("no");
+     
       setStyle(false);
       setHide(false);
     }
 
-    console.log(window.scrollY);
   });
 
   return (
@@ -89,21 +88,23 @@ export default function Navbar({scheme}) {
             pr={5}
             w={{ lg: "500px", md: "100%", sm: "100%", base: "100%" }}
           >
-            <Image
+           <Link to="/">
+           <Image
               src="https://cdn1.tripoto.com/assets/2.9/img/logo/tripoto.svg"
               alt="Tripoto Icon"
               objectFit="cover"
             />
+           </Link>
             <Center>
               <Text
                 display={{ lg: "none", md: "block", sm: "block" }}
-                visibility={{ lg: "hidden", md: "initial", sm: "initial" }}
+                visibility={{ lg: "hidden", md: "initial", sm: "initial"  }}
                 color="white"
               >
                 GET APP
                   
               </Text>
-              <Box display={{lg:"none" ,md:(!Style ? "block" : "none"),sm:(Style ? "block" : "none"),base:(Style ? "block" : "none") }} visibility={{lg:"hidden" ,md:(!Style ? "initial" : "hidden"),sm:(Style ? "initial" : "hidden"),base:(!Style ? "initial" : "hidden") }}>
+              <Box display={{lg:"none" ,md:(!Style ? "block" : "none"),sm:(!Style ? "block" : "none"),base:(!Style ? "block" : "none") }} visibility={{lg:"hidden" ,md:(!Style ? "initial" : "hidden"),sm:(!Style ? "initial" : "hidden"),base:(!Style ? "initial" : "hidden") }}>
 
                <Sidemenu scheme="transparent" color="black"  />
               </Box>

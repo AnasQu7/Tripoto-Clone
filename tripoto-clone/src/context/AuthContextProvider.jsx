@@ -9,6 +9,7 @@ export const AuthContext = createContext();
 export default function AuthContextProvider({children}){
     const [Account , setAccount] = useState({
 email : "mohammad Anas Quraishi"})
+    
     const [Auth , setAuth] = useState(false);
     const toggleAuth = (x)=>{
         setAuth(x)
