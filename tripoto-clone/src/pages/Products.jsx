@@ -212,7 +212,7 @@ function Products() {
                   
                   position="sticky" top="100px"
                 >
-                    <Payment/>
+                    <Payment {...el}/>
                 </Box>
               </Flex>
             </Box>

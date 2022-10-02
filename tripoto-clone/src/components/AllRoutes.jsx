@@ -4,6 +4,7 @@ import Forum from "../pages/Forum"
 import Home from "../pages/Home"
 import Pagenotfound from "../pages/Pagenotfound"
 import Pakages from "../pages/Pakages"
+import PaymentsucessFull from "../pages/PaymentsucessFull"
 import Products from "../pages/Products"
 import Searchpage from "../pages/Searchpage"
 import Singapore from "../pages/Singapore"
@@ -20,6 +21,7 @@ export default function AllRoutes(){
         <Route path="/singapore" element={<Singapore/>} />
         <Route path="/upload" element={<Uploadpage/>} />
         <Route path="/forum" element={<Forum/>} />
-
+        <Route path="/paymentsucess" element={<PaymentsucessFull/>} />
+        
     </Routes>
 }

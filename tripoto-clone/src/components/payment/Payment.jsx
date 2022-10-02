@@ -3,10 +3,10 @@ import { Box, Button, Flex, FormControl, FormHelperText,Text, FormLabel, Heading
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContextProvider";
+import Checkout from "./Checkout"
 
 
-
-function Payment() {
+function Payment(props) {
     const {Auth} = useContext(AuthContext)
     const [Count ,setCount] = useState(1)
   return (
@@ -26,14 +26,13 @@ function Payment() {
             </Flex>
         </Flex>
         <Input mb="15px" placeholder="Departure Date" size="md" type="datetime-local"/>
-        <Input mb="50px" type="email" placeholder="Email address"/>
+       
         {Auth?"":<Alert status='error' mb="5px" p="1px" justifyContent="center">
            <AlertIcon />
            <AlertDescription>Please Login to continue. <Link >Login</Link></AlertDescription>
          </Alert>}
-        <Button mb="35px" colorScheme='blue'  variant='solid' w="100%" h="70px" fontSize="1.8vw" disabled={!Auth}>
-          Submit Details <ArrowForwardIcon/>
-        </Button>
+        
+        <Checkout disabled={!Auth} {...props}/>
         <FormHelperText textAlign="center">I accept the Terms of Use and Privacy Policy of Tripoto.</FormHelperText>
       </FormControl>
     </>
