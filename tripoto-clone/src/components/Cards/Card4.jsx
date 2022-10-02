@@ -12,7 +12,10 @@ export default function Card4(props) {
     const [Author , setAuthor] = useState([])
     const [Like , setLike] = useState(false)
     useEffect(()=>{
-        getData()
+       if(props.authorId){
+
+         getData()
+       } 
     },[])
     function getData(){
         let url = `${process.env.REACT_APP_API_URL}/authors?id=${props.authorId}`
@@ -27,19 +30,20 @@ export default function Card4(props) {
             console.log(error);
         })
     } 
-       console.log(props)
-    console.log(Author)      
+    //    console.log(props)
+    // console.log(Author)      
     
     return (
-      
-       Author.map((el)=>{
-            return (
+             <>
                 <Box maxW='100%' borderWidth='1px' borderRadius='lg' overflow='hidden' mb="20px">
   
         <Box p='6'>
           <Box display='flex' alignItems='center' gap={5}>
-            <Avatar name={el.name} src={el?el.avatar:'https://bit.ly/tioluwani-kolawole'} />
-            <Text>{el.name}</Text>
+         { (Author.length!==0)? Author.map((el)=>{ 
+           return (<><Avatar name={el.name} src={el.avatar?el.avatar:'https://bit.ly/tioluwani-kolawole'} />
+            <Text>{el.name}</Text></>)
+         }):<><Avatar name={props.name} src='https://bit.ly/tioluwani-kolawole'/>
+         <Text>{props.name}</Text></>}
             <Box
               color='gray.500'
               fontWeight='semibold'
@@ -51,7 +55,7 @@ export default function Card4(props) {
               {/* name */}
             </Box>
           </Box>
-          <Image mt="5px" width="100%" src={props.image} />
+          <Image mt="5px" width="100%" src={props.image} style={props.style} />
   
           <Box
             mt='1'
@@ -75,8 +79,8 @@ export default function Card4(props) {
         <Flex alignItems="center"><BsShare/><Text ml="2px">Share</Text></Flex>
        </Flex>
       </Box>
-            )
-        })
-      
-    )
+          
+         </>   )
+        
+            
   }

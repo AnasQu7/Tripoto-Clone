@@ -1,4 +1,4 @@
-import { Center, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Center, Heading, SimpleGrid  , Image} from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
@@ -10,7 +10,8 @@ import { SearchContext } from '../context/SearchContextProvider'
 function Searchpage() {
   const {Search} = useContext(SearchContext);
   const [Data , setData] = useState([]);
-  const [Load , setLoad] = useState(true)
+  const [Load , setLoad] = useState(true);
+  
   
   useEffect(()=>{
     fetchData()
@@ -32,6 +33,7 @@ function Searchpage() {
         setData(response.data)
         console.log(Data)      
         setLoad(false)
+       
       })
       .catch(function (error) {
         // handle error
@@ -44,11 +46,11 @@ function Searchpage() {
     <Banner num={7} text="Exclusive Tours & Holiday Packages" />
     <Heading textAlign="center" mt="20px">{(Search && Search!=="")?`Search Results For "${Search}"`:"Exclusive Tours & Holiday Packages"}</Heading>
     <Center mt="50px">
-    {Load?<Loading/>: 
+    {(Data.length===0)?<Image src="https://cdn.dribbble.com/users/2382015/screenshots/6065978/no_result_still_2x.gif?compress=1&resize=600x400"/>:(Load?<Loading/>: 
       <SimpleGrid w="90%" columns={{lg:4 ,md:3 , sm:1 , base:1}} gap={10}>
         {Data.map((el)=><Link to={`/pakages/${el.id}`}><Card3 {...el}/></Link>)}
       </SimpleGrid>
-    }
+    )}
     </Center>
     </>
   )

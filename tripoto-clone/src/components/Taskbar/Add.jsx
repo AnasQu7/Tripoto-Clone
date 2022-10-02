@@ -1,5 +1,6 @@
 import { AddIcon, CloseIcon } from "@chakra-ui/icons"
 import { Avatar, Text, Box, Button, Center, Container, Flex, IconButton, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, Divider, Spacer, AvatarBadge } from "@chakra-ui/react"
+import { Link } from "react-router-dom"
 
 export function Add() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -23,20 +24,20 @@ export function Add() {
             
             <ModalBody>
               <Flex mt="160px" pl="30px" pr="30px" gap={2}>
-              <Box>
-              <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfbkU_IGOiSMyKIRVRsafOUYpQ-FzsrXf7TQ&usqp=CAU" mb="5px" size="xl">
+              <Link to="/explore">
+              <Avatar src="https://aurin.org.au/wp-content/uploads/2022/06/Explore-Icon-400x400.png" mb="5px" size="xl">
               </Avatar>
-              <Center><Text>Tips</Text></Center>
-              </Box>
+              <Center><Text>Explore</Text></Center>
+              </Link>
               <Spacer/>
               <Divider orientation='vertical' />
               <Spacer/>
-              <Box>
+              <Link to="/upload">
               <Avatar src="https://icons.iconarchive.com/icons/martz90/circle/512/camera-icon.png" mb="5px" size="xl">
               <AvatarBadge boxSize='0.5em' w="1.5em" border="0px" bg='green.500'><p style={{fontSize:"15px"}}>new</p></AvatarBadge>
               </Avatar>
-              <Center><Text>Photo/Video</Text></Center>
-              </Box>
+              <Center><Text>Upload Photo</Text></Center>
+              </Link>
   </Flex>
             </ModalBody>
   
