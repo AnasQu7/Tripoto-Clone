@@ -1,0 +1,7 @@
+.hover:hover{
+    background-color: rgb(224, 218, 218);
+}
+.suggestion:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
