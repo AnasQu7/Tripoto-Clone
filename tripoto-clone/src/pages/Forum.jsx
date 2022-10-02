@@ -14,7 +14,7 @@ function Forum() {
     const {Account} = useContext(AuthContext)
     useEffect(()=>{
         getData()
-    },[Page])
+    },[Page,Data])
 
     function getData(){
    
@@ -49,10 +49,10 @@ function Forum() {
               })
                 .then(function (response) {
                   if (response.data !== undefined) {
-                    
+                    e.target.value = ""
                     return toast({
                       position: "bottom-left",
-                      title: "Congratualtions !!",
+                      title: "Comment Successful !",
                       description: `We Are Very Honored To Have Your Comment`,
                       status: "success",
                       duration: 5000,
@@ -76,13 +76,13 @@ function Forum() {
   return (<>
     <Banner2/>
     <Center>
-        {(Account||Account.email==="")?
+        {(!Account.email||Account.email==="")?
             <Alert w="80%" status='error'>
             <AlertIcon />
             <AlertTitle>Please Authenticate Yourself!</AlertTitle>
             <AlertDescription>Log In or Sign Up to have acess to this functionality</AlertDescription>
           </Alert>:
-            <Input w="80%" onKeyPress={handlePost} placeholder='Basic usage' />
+            <Input w="80%" onKeyPress={handlePost} placeholder='Write Your Comment Here' />
 
         }
        
