@@ -1,6 +1,6 @@
 // explore
 
-import { Avatar, Badge, Box ,Flex,Image, Text} from "@chakra-ui/react"
+import { Avatar, Badge, Box ,Center,Flex,Image, Text} from "@chakra-ui/react"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import {IoHeartCircleSharp} from 'react-icons/io5';
@@ -11,6 +11,7 @@ import {BiComment} from 'react-icons/bi';
 export default function Card4(props) {
     const [Author , setAuthor] = useState([])
     const [Like , setLike] = useState(false)
+    const [Likecount,setLikecount] = useState(0)
     useEffect(()=>{
        if(props.authorId){
 
@@ -55,7 +56,8 @@ export default function Card4(props) {
               {/* name */}
             </Box>
           </Box>
-          <Image mt="5px" width="100%" src={props.image} style={props.style} />
+         {(props.type==="video")?<Center w="565" h="315" m="auto"><iframe width="560" height="315" src={props.image}  style={props.style} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></Center>
+          :<Image mt="5px" width="100%" src={props.image} style={props.style} />}
   
           <Box
             mt='1'
@@ -70,11 +72,16 @@ export default function Card4(props) {
          
        </Box>
        <Flex px="6" justifyContent="space-between">
-      <Flex alignItems="center"  > <IoHeartCircleSharp color="red"/><Text> 8  likes</Text></Flex>
+      <Flex alignItems="center"  > <IoHeartCircleSharp color="red"/><Text> {Likecount}  likes</Text></Flex>
       <Text>3.8k veiws</Text>
        </Flex>
        <Flex height="50px" borderTop="1px solid grey" px="6" justifyContent="space-between">
-        <Flex onClick={()=>{setLike(!Like)}} alignItems="center">{!Like?<BsHeart />: <BsHeartFill color="red"/>}<Text ml="2px">Like</Text></Flex>
+        <Flex onClick={()=>{
+          setLike(!Like)
+          if(!Like){
+            setLikecount(Likecount+1)
+          }
+          }} alignItems="center">{!Like?<BsHeart />: <BsHeartFill color="red"/>}<Text ml="2px"> Like</Text></Flex>
         <Flex alignItems="center"><BiComment/><Text ml="2px">Comment</Text></Flex>
         <Flex alignItems="center"><BsShare/><Text ml="2px">Share</Text></Flex>
        </Flex>

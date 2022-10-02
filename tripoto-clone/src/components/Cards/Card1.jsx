@@ -11,7 +11,7 @@ export default function Card1(props) {
     return (
       <Box maxW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
         <Box h="200px" width="100%" overflow="hidden" objectFit="contain" >
-        <Image src={imageUrl}  h="100%" w="100%" objectFit="cover" alt={title} />
+        <Image src={imageUrl} h="100%" w="100%" objectFit="cover" alt={title} />
 
         </Box>
   

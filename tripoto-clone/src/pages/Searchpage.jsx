@@ -44,13 +44,13 @@ function Searchpage() {
   return (
     <>
     <Banner num={7} text="Exclusive Tours & Holiday Packages" />
-    <Heading textAlign="center" mt="20px">{(Search && Search!=="")?`Search Results For "${Search}"`:"Exclusive Tours & Holiday Packages"}</Heading>
-    <Center mt="50px">
-    {(Data.length===0)?<Image src="https://cdn.dribbble.com/users/2382015/screenshots/6065978/no_result_still_2x.gif?compress=1&resize=600x400"/>:(Load?<Loading/>: 
+    <Heading textAlign="center" textTransform="uppercase" mt="20px">{(Search && Search!=="")?`${Search}`:"Exclusive Tours & Holiday Packages"}</Heading>
+    <Center mt="50px">{!Load?
+    ((Data.length===0)?<Image src="https://cdn.dribbble.com/users/2382015/screenshots/6065978/no_result_still_2x.gif?compress=1&resize=600x400"/>:(Load?<Loading/>: 
       <SimpleGrid w="90%" columns={{lg:4 ,md:3 , sm:1 , base:1}} gap={10}>
         {Data.map((el)=><Link to={`/pakages/${el.id}`}><Card3 {...el}/></Link>)}
       </SimpleGrid>
-    )}
+    )):<Loading/>}
     </Center>
     </>
   )

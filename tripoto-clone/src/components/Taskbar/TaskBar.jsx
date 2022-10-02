@@ -24,10 +24,10 @@ export default function Taskbar(){
            <Center><GiSuitcase size={25}/></Center>
            <Center> <Text fontSize={10}>PAKAGES</Text></Center>
             </Link>
-           <Box>
+           <Link to="/forum">
            <Center> <HiSpeakerphone size={25}/></Center>
             <Center> <Text fontSize={10}>FORUM</Text></Center>
-           </Box>
+           </Link >
 
         </Flex>
         </>

@@ -166,11 +166,11 @@ export default function Sidemenu({scheme}) {
                 </Center>
               </DrawerBody>
 
-              <DrawerFooter>
+              <DrawerFooter padding={20}>
                 <Button
                   colorScheme="teal"
                   variant="link"
-                  mr={3}
+                  mb="20px"
                   onClick={() => {
                     setSign(!Sign);
                   }}
@@ -225,7 +225,7 @@ export default function Sidemenu({scheme}) {
                 </Center>
               </DrawerBody>
 
-              <DrawerFooter>
+              <DrawerFooter padding={20}>
                 <Button
                   colorScheme="teal"
                   variant="link"

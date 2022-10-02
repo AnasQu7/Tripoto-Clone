@@ -8,7 +8,7 @@ export default function Card2(props) {
     } = props
   
     return (
-      <Box maxW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+      <Box minH="330px" maxW='xs' borderWidth='1px' borderRadius='lg' overflow='hidden'>
         <Box h="200px" width="100%" overflow="hidden" objectFit="contain" >
         <Image src={imageUrl}  h="100%" w="100%" objectFit="cover" />
 

@@ -4,6 +4,7 @@ import Banner from '../components/Banner/Banner'
 import Courosel from '../components/Courosel/Courosel'
 import Card1 from '../components/Cards/Card1'
 import Card2 from '../components/Cards/Card2'
+import Travel from '../components/Travel'
 
 function Home() {
   return (<>
@@ -27,10 +28,10 @@ function Home() {
       <a href='https://www.instagram.com/p/CjCouINvPt3/?hl=en' target="blanck"><Card2 imageUrl="https://cdn1.tripoto.com/media/filter/tst/img/1516992/Image/1664366571_tent_1.jpg" description="Watch: Working With Locals At Nayalap" /></a>
     </SimpleGrid>
     <Courosel name="international" heading="Plan You Next International Trip During October & November" />
-    <Courosel name="travel" heading="Check Out Best Hotels and Properties for Every Type of Traveller" />
     
-    
+    <Travel/>
   
+    <Courosel name="travel" heading="Check Out Best Hotels and Properties for Every Type of Traveller" />
 
   </>
   )

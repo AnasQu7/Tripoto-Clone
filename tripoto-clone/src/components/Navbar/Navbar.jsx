@@ -15,20 +15,23 @@ import {
   InputGroup,
   InputRightAddon,
   InputLeftAddon,
+  Divider,
   
 } from "@chakra-ui/react";
 import {
   SearchIcon,
   TriangleDownIcon,
 } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./navbar.css";
 import Signin from "./Signin";
 import Account from "./Account";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContextProvider";
 import Sidemenu from "../Sidemenu/Sidemenu";
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
+import axios from "axios";
+import { SearchContext } from "../../context/SearchContextProvider";
 export default function Navbar({scheme}) {
   const [Style, setStyle] = useState(false);
   const [Hide, setHide] = useState(false);
@@ -45,6 +48,29 @@ export default function Navbar({scheme}) {
     }
 
   });
+
+  const navigate = useNavigate()
+ 
+ const {Search,toggleSearch} = useContext(SearchContext)
+  const [InputVal , setInputVal] = useState("")
+  const inputRef = useRef(null)
+
+  const handleSuggestions = (event)=>{
+   
+    setInputVal(event.target.value)
+    
+    }
+  const handleSearch= () => {
+    
+    toggleSearch(InputVal);
+    navigate('/search')
+     inputRef.current.value = ""
+    
+  }
+  const handlemenu = (e)=>{
+    toggleSearch(e.target.name)
+    navigate('/search')
+  }
 
   return (
     <>
@@ -111,7 +137,7 @@ export default function Navbar({scheme}) {
             </Center>
           </Flex>
           <Spacer />
-          <Box w="100%">
+          <Box w="100%" >
             <InputGroup
               bg="white"
               overflow="hidden"
@@ -133,6 +159,12 @@ export default function Navbar({scheme}) {
                 variant="unstyled"
                 pl={2}
                 placeholder="Search For Destinations Hotels & Activities"
+                onChange={handleSuggestions} 
+                onKeyPress={(event)=>{
+                  if(event.code === "Enter"){
+                    handleSearch()
+                  }
+                }}
               />
               <InputRightAddon
                 h="100%"
@@ -145,6 +177,7 @@ export default function Navbar({scheme}) {
                 }}
                 children={
                   <IconButton
+                    onClick={()=>{handleSearch()}}
                     aria-label="Search database"
                     icon={<SearchIcon />}
                   />
@@ -161,7 +194,10 @@ export default function Navbar({scheme}) {
                 }}
                 children={<Sidemenu />}
               />
+             
             </InputGroup>
+
+
           </Box>
         </Flex>
         <Spacer />
@@ -189,16 +225,14 @@ export default function Navbar({scheme}) {
               </MenuButton>
               <MenuList>
                 <MenuItem><Link to="/singapore">Visit Singapore</Link></MenuItem>
-                <MenuItem>Beaches</MenuItem>
-                <MenuItem>Mountains</MenuItem>
-                <MenuItem>Heritage</MenuItem>
-                <MenuItem>Weekend Guid</MenuItem>
-                <MenuItem>Upcomming Festival</MenuItem>
-                <MenuItem>Honeymoon Pakage</MenuItem>
-                <MenuItem>Wildlife tourism</MenuItem>
-                <MenuItem>Road Trip</MenuItem>
-                <MenuItem>Gateway Guid</MenuItem>
-                <MenuItem>Luxoury Travel</MenuItem>
+                <MenuItem onClick={handlemenu} name="Bali">Bali</MenuItem>
+                <MenuItem onClick={handlemenu} name="Amsterdam">Amsterdam</MenuItem>
+                <MenuItem onClick={handlemenu} name="London">London</MenuItem>
+                <MenuItem onClick={handlemenu} name="Manali">Manali</MenuItem>
+                <MenuItem onClick={handlemenu} name="beach">Beaches</MenuItem>
+                <MenuItem onClick={handlemenu} name="mountain">Mountains</MenuItem>
+                <MenuItem onClick={handlemenu} name="Heritage">Heritage</MenuItem>
+                <MenuItem onClick={handlemenu} name="honeymoon">Honeymoon Pakage</MenuItem>
               </MenuList>
             </>
           </Menu>
@@ -206,7 +240,7 @@ export default function Navbar({scheme}) {
           {/* 88888888888888888888888888888 */}
           <Center color="white">
             <Tooltip label="Forum" aria-label="A tooltip">
-              <p style={{ colo: "white" }}>Forum</p>
+              <Link to="/forum"><p style={{ colo: "white" }}>Forum</p></Link>
             </Tooltip>
           </Center>
           <Spacer />
