@@ -18,7 +18,7 @@
   - HTML
   - CSS
   - React
-  -React-router
-  -Chakra Ui
+  - React-router
+  - Chakra Ui
 
 ---
